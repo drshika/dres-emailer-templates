@@ -3,10 +3,10 @@ import { useState } from "react";
 const LoAForm = () => {
     // STATE
 
-    const [studentName, setStudentName] = useState("ENTER NAME");
+    const [studentName, setStudentName] = useState("Your Name");
     const [pronouns, setPronouns] = useState("");
-    const [uin, setUin] = useState("UIN");
-    const [accessEmail, setAccessEmail] = useState("someone@example.com");
+    const [uin, setUin] = useState("########");
+    const [accessEmail, setAccessEmail] = useState("example@illinois.edu");
     const [insEmails, setInsEmails] = useState("");
 
     // HELPERS
@@ -15,7 +15,6 @@ const LoAForm = () => {
         if (cleanString.includes("@")) {
             return cleanString;
         }
-
         return `${inString}@illinois.edu`;
     };
 
@@ -34,11 +33,10 @@ const LoAForm = () => {
 Hello Professor,
 ${EMAIL_NEW_LINE}${EMAIL_NEW_LINE}
 
-My name is ${studentName} (UIN: ${uin}) and I am in your class this semester. I am writing to 
-notify you that I have a Letter of Accommodation from DRES (see attached) that I will be utilizing 
-this semester. Do I need to know anything specific for how the accommodations will be applied to 
-this class?
-${EMAIL_NEW_LINE}${EMAIL_NEW_LINE}
+My name is ${studentName} (UIN: ${uin}) and I am in your class this semester. 
+I am writing to notify you that I have a Letter of Accommodation from DRES (see attached) that I will be utilizing this semester.
+Please let me know if you have any specific questions or any specific information for how the accommodations may be applied to this class.
+${EMAIL_NEW_LINE}
 
 Best,${EMAIL_NEW_LINE}
 ${studentName}${EMAIL_NEW_LINE}
@@ -47,10 +45,12 @@ ${pronouns}${EMAIL_NEW_LINE}
 
     const emailBody2 = `
 Hello Professor,
-${EMAIL_NEW_LINE}${EMAIL_NEW_LINE}
+${EMAIL_NEW_LINE}
 
-I’m reaching out to request an extension for the assignment due insert date as a result of an exacerbation of my disability. May I  request an extension for this assignment to insert date and time. I’ve also CC’d my Access Specialist on this email too if you have any questions.
-${EMAIL_NEW_LINE}${EMAIL_NEW_LINE}
+I’m reaching out to request an extension for the assignment due insert date as a result of an exacerbation of my disability. 
+I would like to request an extension for this assignment to insert date and time. 
+I’ve also CCed my Access Specialist on this email too if you have any questions.
+${EMAIL_NEW_LINE}
 
 Best,${EMAIL_NEW_LINE}
 ${studentName}${EMAIL_NEW_LINE}
@@ -59,10 +59,13 @@ ${pronouns}${EMAIL_NEW_LINE}
 
     const emailBody3 = `
 Hello X,
-${EMAIL_NEW_LINE}${EMAIL_NEW_LINE}
+${EMAIL_NEW_LINE}
 
-I am currently experiencing a flare up of my disability and will not be able to attend class today. As soon as I am able, I would like to try and meet with you to discuss any material missed in class. I have also CC’d my Access Specialist on this email so they can help answer any questions too.
-${EMAIL_NEW_LINE}${EMAIL_NEW_LINE}
+I am sending this email to let you know that I am not able to attend class for disability related reasons. 
+If you can, please provide an alternative assignment, and if you have any questions, feel free to ask! 
+If you would like, I can meet with you to discuss any material missed in class. 
+I have also CCed my Access Specialist on this email so they can help answer any questions too.
+${EMAIL_NEW_LINE}
  
 Best,${EMAIL_NEW_LINE}
 ${studentName}${EMAIL_NEW_LINE}
@@ -70,9 +73,8 @@ ${pronouns}${EMAIL_NEW_LINE}
     `;
 
     const mailToLink1 = `mailto:professor@example.com?cc=${accessEmailForMailto}&bcc=${professorEmailsForMailto}&subject=DRES LOA&body=${emailBody1}`;
-    const mailToLink2 = `mailto:professor@example.com?cc=${accessEmailForMailto}&bcc=${professorEmailsForMailto}&subject=DRES LOA&body=${emailBody2}`;
-    const mailToLink3 = `mailto:professor@example.com?cc=${accessEmailForMailto}&bcc=${professorEmailsForMailto}&subject=DRES LOA&body=${emailBody3}`;
-
+    const mailToLink2 = `mailto:professor@example.com?cc=${accessEmailForMailto}&bcc=${professorEmailsForMailto}&subject=Extension Request&body=${emailBody2}`;
+    const mailToLink3 = `mailto:professor@example.com?cc=${accessEmailForMailto}&bcc=${professorEmailsForMailto}&subject=Alternative Assignment Request&body=${emailBody3}`;
 
     const previewText1 = emailBody1.split(EMAIL_NEW_LINE);
     const previewText2 = emailBody2.split(EMAIL_NEW_LINE);
@@ -87,7 +89,7 @@ ${pronouns}${EMAIL_NEW_LINE}
                 onChange={e => setStudentName(e.target.value)} />
             <br />
 
-            <label htmlFor="uin">UIN:</label>
+            <label htmlFor="uin">UIN: </label>
             <input type="text" name="uin" value={uin} 
                 onChange={e => setUin(e.target.value)} />
             <br />
@@ -97,18 +99,18 @@ ${pronouns}${EMAIL_NEW_LINE}
                 onChange={e => setPronouns(e.target.value)}/>
             <br />
 
-            <label htmlFor="access_email">DRES Access Specialist email/netid: </label>
+            <label htmlFor="access_email">DRES Access Specialist Email/NetID: </label>
             <input type="text" name="access_email" value={accessEmail}
                 onChange={e => setAccessEmail(e.target.value)} />
             <br />
 
-            <label for="access_email">Instructor emails/netids (separated by commas):</label>
+            <label for="access_email">Instructor emails/NetIDs (separated by commas): </label>
             <input type="text" name="access_email" value={insEmails}
                 onChange={e => setInsEmails(e.target.value)} />
             <br />
         </form>
         
-        <p><strong>Preview: </strong></p>
+        <p><strong>Previews: </strong></p>
         <div>
             {previewText1.map(
                 line => <div>{line}</div> 
@@ -135,10 +137,10 @@ ${pronouns}${EMAIL_NEW_LINE}
             {pronouns}
         </p> */}
         <p>
-            <a href={mailToLink1} target="_blank" rel="noopener noreferrer">Open Template 1 in email client</a> <br/>
-            <a href={mailToLink2} target="_blank" rel="noopener noreferrer">Open Template 2 in email client</a> <br/>
-            <a href={mailToLink3} target="_blank" rel="noopener noreferrer">Open Template 3 in email client</a> <br/>
-            <strong> Don't forget the attachment!</strong>
+            <a href={mailToLink1} target="_blank" rel="noopener noreferrer">Open Template 1 in Email Client: </a> <br/>
+            <a href={mailToLink2} target="_blank" rel="noopener noreferrer">Open Template 2 in Email Client: </a> <br/>
+            <a href={mailToLink3} target="_blank" rel="noopener noreferrer">Open Template 3 in Email Client: </a> <br/>
+            <strong> Please do not forget any applicable attachments! </strong>
         </p>
         </>
     );

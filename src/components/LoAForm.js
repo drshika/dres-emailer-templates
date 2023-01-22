@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const LoAForm = () => {
     // STATE
-
     const [studentName, setStudentName] = useState("Your Name");
     const [pronouns, setPronouns] = useState("");
     const [uin, setUin] = useState("########");
@@ -24,7 +23,6 @@ const LoAForm = () => {
     }
 
     // TEMPLATING
-
     const EMAIL_NEW_LINE = '%0D%0A';
     const accessEmailForMailto = formatEmailId(accessEmail);
     const professorEmailsForMailto = formatInstructorEmails(insEmails);
@@ -47,7 +45,7 @@ ${pronouns}${EMAIL_NEW_LINE}
 Hello Professor,
 ${EMAIL_NEW_LINE}
 
-I’m reaching out to request an extension for the assignment due insert date as a result of an exacerbation of my disability. 
+I am reaching out to request an extension for the assignment due insert date as a result of an exacerbation of my disability. 
 I would like to request an extension for this assignment to insert date and time. 
 I’ve also CCed my Access Specialist on this email too if you have any questions.
 ${EMAIL_NEW_LINE}
@@ -58,7 +56,7 @@ ${pronouns}${EMAIL_NEW_LINE}
    `;
 
     const emailBody3 = `
-Hello X,
+Hello Professor,
 ${EMAIL_NEW_LINE}
 
 I am sending this email to let you know that I am not able to attend class for disability related reasons. 
@@ -83,9 +81,10 @@ ${pronouns}${EMAIL_NEW_LINE}
 
     return (
         <>
+            <h4> UIUC DRES Email Helper</h4>
         <form>
             <label htmlFor="student_name">Name: </label>
-            <input type="text" name="student_name" value={studentName} 
+            <input type="text" name="student_name" value={studentName}
                 onChange={e => setStudentName(e.target.value)} />
             <br />
 
@@ -110,13 +109,13 @@ ${pronouns}${EMAIL_NEW_LINE}
             <br />
         </form>
         
-        <p><strong>Previews: </strong></p>
-        <div>
+        <p style={{padding: "0px 0px 0px 25px"}}><strong>Previews: </strong></p>
+        <div style={{padding: "0px 0px 0px 50px"}}>
             {previewText1.map(
-                line => <div>{line}</div> 
+                line => <div>{line}</div>
             )} <br/>
             {previewText2.map(
-                line => <div>{line}</div> 
+                line => <div>{line}</div>
             )} <br/>
             {previewText3.map(
                 line => <div>{line}</div> 
@@ -125,21 +124,21 @@ ${pronouns}${EMAIL_NEW_LINE}
         {/* <p>
             Hello Professor,<br /> <br />
 
-            My name is is {studentName} (UIN: {uin}) and I am in your class this semester. 
-            I am writing to notify you that I have a Letter of Accommodation from DRES 
+            My name is is {studentName} (UIN: {uin}) and I am in your class this semester.
+            I am writing to notify you that I have a Letter of Accommodation from DRES
             (see attached) that I will be utilizing this semester. Do I need to know anything
             specific for how the accommodations will be applied to this class?
 
             <br /> <br />
             Best,<br />
-        
+
             {studentName}<br />
             {pronouns}
         </p> */}
-        <p>
+        <p style={{padding: "0px 0px 0px 25px"}}>
             <a href={mailToLink1} target="_blank" rel="noopener noreferrer">Open Template 1 in Email Client: </a> <br/>
             <a href={mailToLink2} target="_blank" rel="noopener noreferrer">Open Template 2 in Email Client: </a> <br/>
-            <a href={mailToLink3} target="_blank" rel="noopener noreferrer">Open Template 3 in Email Client: </a> <br/>
+            <a href={mailToLink3} target="_blank" rel="noopener noreferrer">Open Template 3 in Email Client: </a> <br/> <br/>
             <strong> Please do not forget any applicable attachments! </strong>
         </p>
         </>

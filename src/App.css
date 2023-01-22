@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+h4 {
+  text-align: center;
+}
+
+label {
+  padding: 10px 10px 10px 25px;
+}
+
+input[type=text] {
+  height: 32px;
+  font-size: large;
+}
+
+a:link {
+  color: #4eb1e6;
+}

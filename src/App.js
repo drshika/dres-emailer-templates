@@ -1,5 +1,5 @@
-import './App.css';
-import LoAForm from './components/LoAForm';
+import "./App.css";
+import LoAForm from "./components/LoAForm";
 
 function App() {
   return (

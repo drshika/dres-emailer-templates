@@ -58,7 +58,7 @@ I would like to request an extension for this assignment to insert date and time
 I am sending this email to let you know that I am not able to attend class for disability related reasons. 
 If you can, please provide an alternative assignment, and if you have any questions, feel free to ask! 
 If you would like, I can meet with you to discuss any material missed in class. 
-`
+`,
   };
 
   const emailBody = emailIntro + templates[selectedTemplate] + emailOutro;
@@ -69,23 +69,28 @@ If you would like, I can meet with you to discuss any material missed in class.
     <>
       <h3>Letter of Accommodation Email Template</h3>
       {Object.keys(templates).map((template, index) => (
-          <div key={index}>
-            <input
-              type="radio"
-              id={template}
-              name="emailTemplate"
-              value={template}
-              checked={selectedTemplate === template}
-              onChange={() => setSelectedTemplate(template)}
-            />
-            <label htmlFor={template}>{template}</label>
-          </div>
-        ))}
+        <div key={index}>
+          <input
+            type="radio"
+            id={template}
+            name="emailTemplate"
+            value={template}
+            checked={selectedTemplate === template}
+            onChange={() => setSelectedTemplate(template)}
+          />
+          <label htmlFor={template}>{template}</label>
+        </div>
+      ))}
 
       <br />
 
       <p>
-        For CBTF accomodations, visit <a href="https://cbtf.illinois.edu/students/dres" target="_blank">https://cbtf.illinois.edu/students/dres</a> where there is another form that can be used to request accomodations for CBTF exams.
+        For CBTF accomodations, visit{" "}
+        <a href="https://cbtf.illinois.edu/students/dres" target="_blank">
+          https://cbtf.illinois.edu/students/dres
+        </a>{" "}
+        where there is another form that can be used to request accomodations
+        for CBTF exams.
       </p>
 
       <h3>Enter the information</h3>
@@ -148,7 +153,6 @@ If you would like, I can meet with you to discuss any material missed in class.
         {previewText.map((line, index) => (
           <p key={index}>{line}</p>
         ))}
-
       </div>
 
       <p style={{ padding: "0px 0px 0px 25px" }}>

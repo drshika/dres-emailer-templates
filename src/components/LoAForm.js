@@ -86,7 +86,7 @@ If you would like, I can meet with you to discuss any material missed in class.
 
       <p>
         For CBTF accomodations, visit{" "}
-        <a href="https://cbtf.illinois.edu/students/dres" target="_blank">
+        <a href="https://cbtf.illinois.edu/students/dres">
           https://cbtf.illinois.edu/students/dres
         </a>{" "}
         where there is another form that can be used to request accomodations

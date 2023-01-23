@@ -25,60 +25,43 @@ const LoAForm = () => {
 
   // TEMPLATING
   const NEW_LINE = "%0D%0A"; // %0D%0A is the URL encoded version of \r and \n to make it work with email clients
+  const TWO_NEW_LINES = NEW_LINE + NEW_LINE;
 
   const accessEmailForMailto = formatEmailId(accessEmail);
   const professorEmailsForMailto = formatInstructorEmails(instructorEmails);
 
-  const emailBody1 = `
+  const emailIntro = `
 Hello Professor,
-${NEW_LINE}${NEW_LINE}
+${TWO_NEW_LINES}
+`;
 
+  const emailOutro = `
+${TWO_NEW_LINES}
+Best,${NEW_LINE}
+${studentName}${NEW_LINE}
+${pronouns}${NEW_LINE}
+`;
+
+  const templates = {
+    "DRES LOA": `
 My name is ${studentName} (UIN: ${uin}) and I am in your class this semester. 
 I am writing to notify you that I have a Letter of Accommodation from DRES (see attached) that I will be utilizing this semester.
 Please let me know if you have any specific questions or any specific information for how the accommodations may be applied to this class.
-${NEW_LINE}
-
-Best,${NEW_LINE}
-${studentName}${NEW_LINE}
-${pronouns}${NEW_LINE}
-    `;
-
-  const emailBody2 = `
-Hello Professor,
-${NEW_LINE}${NEW_LINE}
-
+`,
+    "Extension Request": `
 I am reaching out to request an extension for the assignment due insert date as a result of an exacerbation of my disability. 
 I would like to request an extension for this assignment to insert date and time. 
 I’ve also CCed my Access Specialist on this email too if you have any questions.
-${NEW_LINE}
-
-Best,${NEW_LINE}
-${studentName}${NEW_LINE}
-${pronouns}${NEW_LINE}
-   `;
-
-  const emailBody3 = `
-Hello Professor,
-${NEW_LINE}${NEW_LINE}
-
+`,
+    "Alternative Assignment Request": `
 I am sending this email to let you know that I am not able to attend class for disability related reasons. 
 If you can, please provide an alternative assignment, and if you have any questions, feel free to ask! 
 If you would like, I can meet with you to discuss any material missed in class. 
 I have also CCed my Access Specialist on this email so they can help answer any questions too.
-${NEW_LINE}
- 
-Best,${NEW_LINE}
-${studentName}${NEW_LINE}
-${pronouns}${NEW_LINE}
-    `;
-
-  const templates = {
-    "DRES LOA": emailBody1,
-    "Extension Request": emailBody2,
-    "Alternative Assignment Request": emailBody3
+`
   };
 
-  const emailBody = templates[selectedTemplate];
+  const emailBody = emailIntro + templates[selectedTemplate] + emailOutro;
   const mailToLink = `mailto:professor@example.com?cc=${accessEmailForMailto}&bcc=${professorEmailsForMailto}&subject=${selectedTemplate}&body=${emailBody}`;
   const previewText = emailBody.split(NEW_LINE);
 
@@ -86,6 +69,14 @@ ${pronouns}${NEW_LINE}
     <>
       <h4> UIUC DRES Email Helper</h4>
       <form>
+        <label htmlFor="template">Select template: </label>
+        <select value={selectedTemplate} onChange={(e) => setSelectedTemplate(e.target.value)}>
+          {Object.keys(templates).map((template) => (
+            <option value={template}>{template}</option>
+          ))}
+        </select>
+        <br />
+
         <label htmlFor="student_name">Name: </label>
         <input
           type="text"
@@ -135,17 +126,10 @@ ${pronouns}${NEW_LINE}
         />
 
         <br />
-        <label htmlFor="template">Select template: </label>
-        <select value={selectedTemplate} onChange={(e) => setSelectedTemplate(e.target.value)}>
-          {Object.keys(templates).map((template) => (
-            <option value={template}>{template}</option>
-          ))}
-        </select>
-        <br />
       </form>
 
       <p style={{ padding: "0px 0px 0px 25px" }}>
-        <strong>Previews: </strong>
+        <strong>Preview: </strong>
       </p>
       <div style={{ padding: "0px 0px 0px 50px" }}>
         {previewText.map((line) => (

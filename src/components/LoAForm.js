@@ -156,9 +156,7 @@ If you would like, I can meet with you to discuss any material missed in class.
       </div>
 
       <p style={{ padding: "0px 0px 0px 25px" }}>
-        <a href={mailToLink}>
-          Open in Email Application (mailto link)
-        </a>
+        <a href={mailToLink}>Open in Email Application (mailto link)</a>
       </p>
 
       <p style={{ padding: "0px 0px 0px 25px" }}>

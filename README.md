@@ -26,7 +26,7 @@ DRES Email Templates is a web application that helps UIUC students with disabili
 
 If you have any feedback, feature requests, new templates or encounter any bugs, please open an issue on the [Issue Tracker](https://github.com/drshika/dres-emailer-templates/issues)
 
-If you would like to contribute code to the project, please fork the repository and submit a Pull Request. 
+If you would like to contribute code to the project, please fork the repository and submit a Pull Request.
 
 ## GPT
 

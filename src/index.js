@@ -11,4 +11,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+document.title = "DRES Email Templates"
+
+
 reportWebVitals();

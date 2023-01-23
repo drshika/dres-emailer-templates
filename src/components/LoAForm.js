@@ -173,7 +173,6 @@ export default LoAForm;
 /**
  * TODO:
  * maxWidth,
- * DRY form code, rename emails to generic contacts if we don't know netid/email
  * persist data from past loads
  * add more form templates
  */

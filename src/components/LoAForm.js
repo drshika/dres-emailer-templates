@@ -1,14 +1,6 @@
 import { useState } from "react";
 
 const LoAForm = () => {
-  // STATE
-  const [studentName, setStudentName] = useState("Your Name");
-  const [pronouns, setPronouns] = useState("");
-  const [uin, setUin] = useState("########");
-  const [accessEmail, setAccessEmail] = useState("example@illinois.edu");
-  const [instructorEmails, setInstructorEmails] = useState("");
-  const [selectedTemplate, setSelectedTemplate] = useState("DRES LOA");
-
   // HELPERS
   const formatEmailId = (inString) => {
     const cleanString = inString.trim();
@@ -22,6 +14,41 @@ const LoAForm = () => {
     const splitEmails = rawEmails.split(",");
     return splitEmails.map(formatEmailId).join(",");
   };
+
+  const getInitialFormValues = () => {
+    const storedData = JSON.parse(localStorage.getItem("formData"));
+    return {
+      studentName: storedData ? storedData.studentName : "Your Name",
+      pronouns: storedData ? storedData.pronouns : "",
+      uin: storedData ? storedData.uin : "########",
+      accessEmail: storedData ? storedData.accessEmail : "example@illinois.edu",
+      instructorEmails: storedData ? storedData.instructorEmails : "",
+    };
+  };
+
+  const saveFormValues = (studentName, pronouns, uin, accessEmail, instructorEmails, selectedTemplate) => {
+    localStorage.setItem(
+      "formData",
+      JSON.stringify({
+        studentName,
+        pronouns,
+        uin,
+        accessEmail,
+        instructorEmails      
+      })
+    );
+  };
+
+  // STATE
+  const [selectedTemplate, setSelectedTemplate] = useState("DRES LOA");
+  
+  const { c_studentName, c_pronouns, c_uin, c_accessEmail, c_instructorEmails } = getInitialFormValues();
+  const [studentName, setStudentName] = useState(c_studentName);
+  const [pronouns, setPronouns] = useState(c_pronouns);
+  const [uin, setUin] = useState(c_uin);
+  const [accessEmail, setAccessEmail] = useState(c_accessEmail);
+  const [instructorEmails, setInstructorEmails] = useState(c_instructorEmails);
+  
 
   // TEMPLATING
   const NEW_LINE = "%0D%0A"; // %0D%0A is the URL encoded version of \r and \n to make it work with email clients
